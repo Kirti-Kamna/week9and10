@@ -1,6 +1,6 @@
 import {Pressable, StyleSheet, View} from 'react-native';
 
-const IconButton = ({onPress}) => {
+function IconButton({onPress}) {
   return (
     <Pressable
       onPress={onPress}
@@ -8,7 +8,7 @@ const IconButton = ({onPress}) => {
       <View style={styles.buttonContainer}></View>
     </Pressable>
   );
-};
+}
 
 export default IconButton;
 

@@ -6,7 +6,10 @@ import Button from '../UI/Button';
 import {getFormattedDate} from '../../util/date';
 import {GlobalStyles} from '../../constants/styles';
 
-function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defaultValues}) {
+function ExpenseForm(
+  this: any,
+  {submitButtonLabel, onCancel, onSubmit, defaultValues},
+) {
   const [inputs, setInputs] = useState({
     amount: {
       value: defaultValues ? defaultValues.amount.toString() : '',
@@ -22,7 +25,7 @@ function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defaultValues}) {
     },
   });
 
-  function inputChangedHandler(inputIdentifier, enteredValue) {
+  function inputChangedHandler(inputIdentifier: any, enteredValue: any) {
     setInputs(curInputs => {
       return {
         ...curInputs,
@@ -34,7 +37,7 @@ function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defaultValues}) {
   function submitHandler() {
     const expenseData = {
       amount: +inputs.amount.value,
-      date: new Date(inputs.date.value),
+      date: new Date(),
       description: inputs.description.value,
     };
 
@@ -101,6 +104,7 @@ function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defaultValues}) {
           onChangeText: inputChangedHandler.bind(this, 'description'),
           value: inputs.description.value,
         }}
+        style={undefined}
       />
       {formIsInvalid && (
         <Text style={styles.errorText}>
@@ -111,7 +115,7 @@ function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defaultValues}) {
         <Button style={styles.button} mode="flat" onPress={onCancel}>
           Cancel
         </Button>
-        <Button style={styles.button} onPress={submitHandler}>
+        <Button style={styles.button} onPress={submitHandler} mode={undefined}>
           {submitButtonLabel}
         </Button>
       </View>

@@ -2,7 +2,14 @@ import {FlatList} from 'react-native';
 
 import ExpenseItem from './ExpenseItem';
 
-function renderExpenseItem(itemData) {
+function renderExpenseItem(itemData: {
+  item: JSX.IntrinsicAttributes & {
+    id: any;
+    description: any;
+    amount: any;
+    date: any;
+  };
+}) {
   return <ExpenseItem {...itemData.item} />;
 }
 

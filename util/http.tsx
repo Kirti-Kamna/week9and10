@@ -24,8 +24,16 @@ export async function fetchExpenses() {
       date: new Date(response.data[key].date),
       description: response.data[key].description,
     };
-    expenses.push(expenseObj);
+    expenses.push();
   }
 
   return expenses;
+}
+
+export function updateExpense(id, expenseData) {
+  return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
+}
+
+export function deleteExpense(id) {
+  return axios.delete(BACKEND_URL + `/expenses/${id}.json`);
 }

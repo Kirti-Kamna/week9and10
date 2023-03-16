@@ -6,11 +6,11 @@ function Input({label, invalid, style, textInputConfig}) {
   const inputStyles = [styles.input];
 
   if (textInputConfig && textInputConfig.multiline) {
-    inputStyles.push(styles.inputMultiline);
+    inputStyles.push();
   }
 
   if (invalid) {
-    inputStyles.push(styles.invalidInput);
+    inputStyles.push();
   }
 
   return (
